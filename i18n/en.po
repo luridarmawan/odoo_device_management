@@ -32,6 +32,16 @@ msgid "Device Name"
 msgstr "Device Name"
 
 #. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__asset_code
+msgid "Asset Code"
+msgstr "Asset Code"
+
+#. module: device_management
+#: model:ir.model.constraint,message:device_management.constraint_device_management_device_asset_code_unique
+msgid "Asset Code must be unique!"
+msgstr "Asset Code must be unique!"
+
+#. module: device_management
 #: model:ir.model.fields,field_description:device_management.field_device_management_device__department_id
 #: model:ir.model.fields,field_description:device_management.field_device_management_log__department_id
 msgid "Department"

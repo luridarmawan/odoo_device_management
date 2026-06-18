@@ -6,6 +6,12 @@ Addon Odoo 19 untuk inventarisasi dan pengelolaan perangkat IT perusahaan (PC, L
 
 Bagian dari proyek [odoo-boilerplate](https://github.com/luridarmawan/odoo-boilerplate) untuk Odoo 19.
 
+## Tangkapan Layar
+
+| Dashboard | Detail Perangkat |
+|-----------|------------------|
+| ![Dashboard](docs/dashboard.png) | ![Detail Perangkat](docs/detail.png) |
+
 ## Fitur
 
 - **Master Data Perangkat**: Pencatatan nama, departemen, user, IP, MAC, OS, serial number, tipe perangkat, dan lokasi.

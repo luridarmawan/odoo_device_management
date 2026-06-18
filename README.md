@@ -6,6 +6,12 @@ Odoo 19 addon for IT company device inventory and management (PC, Laptop, Server
 
 Part of the [odoo-boilerplate](https://github.com/luridarmawan/odoo-boilerplate) project for Odoo 19.
 
+## Screenshots
+
+| Dashboard | Device Detail |
+|-----------|---------------|
+| ![Dashboard](docs/dashboard.png) | ![Device Detail](docs/detail.png) |
+
 ## Features
 
 - **Device Master Data**: Records name, department, user, IP, MAC, OS, serial number, device type, and location.

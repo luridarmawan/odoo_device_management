@@ -9,6 +9,9 @@ class DeviceManagementDevice(models.Model):
     _description = 'Device Management - Device'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'name asc'
+    _sql_constraints = [
+        ('asset_code_unique', 'UNIQUE(asset_code)', 'Asset Code must be unique!'),
+    ]
 
     # ─── General Information ────────────────────────────────────────────────────
 
@@ -17,6 +20,14 @@ class DeviceManagementDevice(models.Model):
         required=True,
         tracking=True,
         help='Name of the device',
+    )
+
+    asset_code = fields.Char(
+        string='Asset Code',
+        index=True,
+        copy=False,
+        tracking=True,
+        help='Unique asset code or inventory tag for this device',
     )
 
     def _default_department_id(self):
@@ -161,6 +172,8 @@ class DeviceManagementDevice(models.Model):
             ('ssh', 'SSH'),
             ('rustdesk', 'RustDesk'),
             ('vnc', 'VNC'),
+            ('http', 'HTTP'),
+            ('https', 'HTTPS'),
         ],
         string='Remote Type',
         tracking=True,
@@ -173,7 +186,7 @@ class DeviceManagementDevice(models.Model):
 
     remote_port = fields.Char(
         string='Remote Port',
-        help='Port number for remote connection (e.g. 22 for SSH, 5900 for VNC)',
+        help='Port number for remote connection (e.g. 22 for SSH, 5900 for VNC, 80 for HTTP, 443 for HTTPS)',
     )
 
     remote_url = fields.Char(
@@ -264,6 +277,20 @@ class DeviceManagementDevice(models.Model):
                     if port:
                         url = f'vnc://{base_url}:{port}'
                         command = f'vncviewer {base_cmd}:{port}'
+            elif record.remote_type == 'http':
+                if record.ip_address:
+                    url = f'http://{record.ip_address}'
+                    command = f'open http://{record.ip_address}'
+                    if port:
+                        url = f'http://{record.ip_address}:{port}'
+                        command = f'open http://{record.ip_address}:{port}'
+            elif record.remote_type == 'https':
+                if record.ip_address:
+                    url = f'https://{record.ip_address}'
+                    command = f'open https://{record.ip_address}'
+                    if port:
+                        url = f'https://{record.ip_address}:{port}'
+                        command = f'open https://{record.ip_address}:{port}'
             record.remote_url = url
             record.remote_command = command
 

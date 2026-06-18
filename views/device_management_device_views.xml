@@ -20,6 +20,7 @@
                 <field name="video_adapter" optional="hide"/>
                 <field name="operating_system" widget="badge" decoration-info="operating_system == 'windows'" decoration-success="operating_system == 'linux'" decoration-warning="operating_system == 'mac'"/>
                 <field name="serial_number" optional="hide"/>
+                <field name="asset_code" optional="hide"/>
                 <field name="active" column_invisible="True"/>
                 <field name="status" widget="badge" decoration-success="status == 'active'" decoration-warning="status == 'broken' or status == 'in_repair'" decoration-danger="status == 'retired' or status == 'disposed' or status == 'parted_out'"/>
             </list>
@@ -53,6 +54,7 @@
 
                     <group>
                         <group string="General Information" name="general_info">
+                            <field name="asset_code" placeholder="e.g. AST-0001"/>
                             <field name="status"/>
                             <field name="department_id" options="{'no_create': True, 'no_open': False}"/>
                             <field name="user_name" placeholder="e.g. Administrator, user01"/>
@@ -146,6 +148,7 @@
         <field name="arch" type="xml">
             <search string="Search Devices">
                 <field name="name"/>
+                <field name="asset_code"/>
                 <field name="user_name"/>
                 <field name="ip_address"/>
                 <field name="mac_address"/>
