@@ -9,6 +9,9 @@ class DeviceManagementDevice(models.Model):
     _description = 'Device Management - Device'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'name asc'
+    _sql_constraints = [
+        ('asset_code_unique', 'UNIQUE(asset_code)', 'Asset Code must be unique!'),
+    ]
 
     # ─── General Information ────────────────────────────────────────────────────
 
@@ -281,10 +284,6 @@ class DeviceManagementDevice(models.Model):
             record.log_count = len(record.log_ids)
 
     # ─── Validation ─────────────────────────────────────────────────────────────
-
-    _sql_constraints = [
-        ('asset_code_unique', 'UNIQUE(asset_code)', 'Asset Code must be unique!'),
-    ]
 
     @api.constrains('ip_address')
     def _check_ip_address(self):
