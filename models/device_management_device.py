@@ -160,6 +160,7 @@ class DeviceManagementDevice(models.Model):
             ('server', 'Server'),
             ('virtual', 'Virtual'),
             ('embedded', 'Embedded'),
+            ('others', 'Others'),
         ],
         string='Device Type',
         tracking=True,
