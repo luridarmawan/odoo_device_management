@@ -7,7 +7,7 @@
     'description': """
 Device Management
 =================
-Module untuk inventarisasi dan pengelolaan perangkat IT perusahaan.
+IT company device inventory and management module.
 
 Features:
 - Device master data (PC, Laptop, Server, Embedded)
