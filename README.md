@@ -1,42 +1,82 @@
 # Device Management
 
-Addon Odoo 19 untuk inventarisasi dan pengelolaan perangkat IT perusahaan (PC, Laptop, Server, Embedded Device).
+**Language:** [🇬🇧 English](README.md) | [🇮🇩 Indonesia](README-id.md)
 
-## Fitur
+Odoo 19 addon for IT company device inventory and management (PC, Laptop, Server, Embedded Device).
 
-- **Master Data Perangkat**: Pencatatan nama, departemen, user, IP, MAC, OS, serial number, tipe perangkat, dan lokasi.
-- **Device Log**: Pencatatan riwayat maintenance, repair, upgrade, dan troubleshooting.
-- **One-click Remote Access**: Dukungan SSH, RustDesk, dan VNC via Custom URL Protocol.
-- **Multi Language**: English (en_US) dan Bahasa Indonesia (id_ID).
+Part of the [odoo-boilerplate](https://github.com/luridarmawan/odoo-boilerplate) project for Odoo 19.
+
+## Features
+
+- **Device Master Data**: Records name, department, user, IP, MAC, OS, serial number, device type, and location.
+- **Device Log**: Records maintenance, repair, upgrade, and troubleshooting history.
+- **One-click Remote Access**: SSH, RustDesk, and VNC support via Custom URL Protocol.
+- **Multi Language**: English (en_US) and Indonesian (id_ID).
 - **Security Groups**: Device User (read-only), Device Manager (CRUD), Device Administrator (full access).
 
-## Instalasi
+## Multi Language
 
-1. Salin folder ini ke direktori addons Odoo Anda:
+This module supports two languages:
+
+| Language         | Locale | File              |
+|------------------|--------|-------------------|
+| English          | en_US  | `i18n/en.po`      |
+| Indonesian       | id_ID  | `i18n/id.po`      |
+
+Language is automatically detected from the user's Odoo language preference.
+
+## Installation
+
+### Traditional Installation
+
+1. Copy this folder to your Odoo addons directory:
 
 ```bash
 cp -r device_management /path/to/odoo/addons/
 ```
 
-2. Restart service Odoo:
+2. Restart Odoo service:
 
 ```bash
 sudo systemctl restart odoo
-# atau
+# or
 sudo service odoo restart
 ```
 
-3. Buka Odoo, aktifkan *Developer Mode* (Settings → Activate Developer Mode).
+3. Open Odoo, enable *Developer Mode* (Settings → Activate Developer Mode).
 
-4. Masuk ke menu **Apps → Update Apps List**.
+4. Go to **Apps → Update Apps List**.
 
-5. Cari **Device Management**, lalu klik **Install**.
+5. Search for **Device Management**, then click **Install**.
 
-### Alternatif via Git Clone
+### Alternative via Git Clone
 
 ```bash
 cd /path/to/odoo/addons
 git clone <repo-url> device_management
 ```
 
-Lanjutkan ke langkah 2-5 di atas.
+Proceed to steps 2-5 above.
+
+### Docker Installation
+
+If you are using the [odoo-boilerplate](https://github.com/luridarmawan/odoo-boilerplate) with Docker:
+
+1. Clone this repository into the `addons/` directory:
+
+```bash
+cd /path/to/odoo-boilerplate/addons
+git clone <repo-url> device_management
+```
+
+2. Restart the Docker containers:
+
+```bash
+docker compose restart
+```
+
+3. Open Odoo, enable *Developer Mode* (Settings → Activate Developer Mode).
+
+4. Go to **Apps → Update Apps List**.
+
+5. Search for **Device Management**, then click **Install**.
