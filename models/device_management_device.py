@@ -19,6 +19,14 @@ class DeviceManagementDevice(models.Model):
         help='Name of the device',
     )
 
+    asset_code = fields.Char(
+        string='Asset Code',
+        index=True,
+        copy=False,
+        tracking=True,
+        help='Unique asset code or inventory tag for this device',
+    )
+
     def _default_department_id(self):
         return self.env.ref('device_management.dep_not_linked_yet', raise_if_not_found=False)
 
@@ -273,6 +281,10 @@ class DeviceManagementDevice(models.Model):
             record.log_count = len(record.log_ids)
 
     # ─── Validation ─────────────────────────────────────────────────────────────
+
+    _sql_constraints = [
+        ('asset_code_unique', 'UNIQUE(asset_code)', 'Asset Code must be unique!'),
+    ]
 
     @api.constrains('ip_address')
     def _check_ip_address(self):
