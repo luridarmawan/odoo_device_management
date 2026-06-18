@@ -147,6 +147,7 @@ class DeviceManagementDevice(models.Model):
             ('pc', 'PC'),
             ('laptop', 'Laptop'),
             ('server', 'Server'),
+            ('virtual', 'Virtual'),
             ('embedded', 'Embedded'),
         ],
         string='Device Type',
