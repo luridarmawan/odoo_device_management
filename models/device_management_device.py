@@ -172,6 +172,8 @@ class DeviceManagementDevice(models.Model):
             ('ssh', 'SSH'),
             ('rustdesk', 'RustDesk'),
             ('vnc', 'VNC'),
+            ('http', 'HTTP'),
+            ('https', 'HTTPS'),
         ],
         string='Remote Type',
         tracking=True,
@@ -184,7 +186,7 @@ class DeviceManagementDevice(models.Model):
 
     remote_port = fields.Char(
         string='Remote Port',
-        help='Port number for remote connection (e.g. 22 for SSH, 5900 for VNC)',
+        help='Port number for remote connection (e.g. 22 for SSH, 5900 for VNC, 80 for HTTP, 443 for HTTPS)',
     )
 
     remote_url = fields.Char(
@@ -275,6 +277,20 @@ class DeviceManagementDevice(models.Model):
                     if port:
                         url = f'vnc://{base_url}:{port}'
                         command = f'vncviewer {base_cmd}:{port}'
+            elif record.remote_type == 'http':
+                if record.ip_address:
+                    url = f'http://{record.ip_address}'
+                    command = f'open http://{record.ip_address}'
+                    if port:
+                        url = f'http://{record.ip_address}:{port}'
+                        command = f'open http://{record.ip_address}:{port}'
+            elif record.remote_type == 'https':
+                if record.ip_address:
+                    url = f'https://{record.ip_address}'
+                    command = f'open https://{record.ip_address}'
+                    if port:
+                        url = f'https://{record.ip_address}:{port}'
+                        command = f'open https://{record.ip_address}:{port}'
             record.remote_url = url
             record.remote_command = command
 
