@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Category for Device Management -->
+        <record id="module_category_device_management" model="ir.module.category">
+            <field name="name">Device Management</field>
+            <field name="description">Category for Device Management access levels.</field>
+            <field name="sequence">10</field>
+        </record>
+
+        <!-- Group: Device User -->
+        <record id="group_device_user" model="res.groups">
+            <field name="name">Device User</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="comment">Members of this group can view devices and logs.</field>
+        </record>
+
+        <!-- Group: Device Manager -->
+        <record id="group_device_manager" model="res.groups">
+            <field name="name">Device Manager</field>
+            <field name="implied_ids" eval="[(4, ref('group_device_user'))]"/>
+            <field name="comment">Members of this group can create, read, update, and delete devices and logs.</field>
+        </record>
+
+        <!-- Group: Device Administrator -->
+        <record id="group_device_administrator" model="res.groups">
+            <field name="name">Device Administrator</field>
+            <field name="implied_ids" eval="[(4, ref('group_device_manager'))]"/>
+            <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="comment">Full access and administration configuration.</field>
+        </record>
+    </data>
+</odoo>
