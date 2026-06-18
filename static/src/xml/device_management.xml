@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="device_management.CopyableIPField">
+        <span t-esc="formattedValue" t-on-click.stop="() => {}"/>
+    </t>
+    <t t-name="device_management.RemoteLinkField">
+        <a t-att-href="formattedValue"
+            target="_blank"
+            rel="noopener noreferrer">
+                <t t-esc="formattedValue"/>
+        </a>
+    </t>
+</templates>

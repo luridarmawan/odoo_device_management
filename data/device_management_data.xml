@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default Department -->
+        <record id="dep_not_linked_yet" model="hr.department">
+            <field name="name">Not Linked Yet</field>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>

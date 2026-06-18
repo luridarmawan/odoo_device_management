@@ -1,0 +1,295 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following module:
+# 	* device_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-17 00:00+0000\n"
+"PO-Revision-Date: 2026-06-17 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: device_management
+#: model:ir.model,name:device_management.model_device_management_device
+msgid "Device Management - Device"
+msgstr "Pengelolaan Perangkat - Perangkat"
+
+#. module: device_management
+#: model:ir.model,name:device_management.model_device_management_log
+msgid "Device Management - Log"
+msgstr "Pengelolaan Perangkat - Log"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__name
+msgid "Device Name"
+msgstr "Nama Perangkat"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__department_id
+#: model:ir.model.fields,field_description:device_management.field_device_management_log__department_id
+msgid "Department"
+msgstr "Departemen"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__user_name
+msgid "User Name"
+msgstr "Nama Pengguna"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__password
+msgid "Password"
+msgstr "Kata Sandi"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__ip_address
+msgid "IP Address"
+msgstr "Alamat IP"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__mac_address
+msgid "MAC Address"
+msgstr "Alamat MAC"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__operating_system
+msgid "Operating System"
+msgstr "Sistem Operasi"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__operating_system_series
+msgid "OS Series"
+msgstr "Seri OS"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__serial_number
+msgid "Serial Number"
+msgstr "Nomor Seri"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__processor
+msgid "Processor"
+msgstr "Prosesor"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__memory_gb
+msgid "Memory (GB)"
+msgstr "Memori (GB)"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__storage_gb
+msgid "Storage (GB)"
+msgstr "Penyimpanan (GB)"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__video_adapter
+msgid "Video Adapter"
+msgstr "Adaptor Video"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__usage_type
+msgid "Usage Type"
+msgstr "Tipe Penggunaan"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__device_type
+msgid "Device Type"
+msgstr "Tipe Perangkat"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__location
+msgid "Location"
+msgstr "Lokasi"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__notes
+msgid "Notes"
+msgstr "Catatan"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__remote_id
+msgid "Remote ID"
+msgstr "ID Remote"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__remote_port
+msgid "Remote Port"
+msgstr "Port Remote"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__remote_type
+msgid "Remote Type"
+msgstr "Tipe Remote"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__active
+msgid "Active"
+msgstr "Aktif"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__log_ids
+msgid "Device Logs"
+msgstr "Log Perangkat"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__maintenance_log_ids
+msgid "Maintenance History"
+msgstr "Riwayat Pemeliharaan"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_device__repair_log_ids
+msgid "Repair Log"
+msgstr "Log Perbaikan"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_log__device_id
+msgid "Device"
+msgstr "Perangkat"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_log__date
+msgid "Date"
+msgstr "Tanggal"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_log__user_id
+msgid "Technician"
+msgstr "Teknisi"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_log__title
+msgid "Title"
+msgstr "Judul"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_log__description
+msgid "Description"
+msgstr "Deskripsi"
+
+#. module: device_management
+#: model:ir.model.fields,field_description:device_management.field_device_management_log__log_type
+msgid "Log Type"
+msgstr "Tipe Log"
+
+#. module: device_management
+#: selection:device.management.device,operating_system:0
+msgid "Windows"
+msgstr "Windows"
+
+#. module: device_management
+#: selection:device.management.device,operating_system:0
+msgid "Linux"
+msgstr "Linux"
+
+#. module: device_management
+#: selection:device.management.device,operating_system:0
+msgid "Mac"
+msgstr "Mac"
+
+#. module: device_management
+#: selection:device.management.device,operating_system:0
+msgid "Others"
+msgstr "Lainnya"
+
+#. module: device_management
+#: selection:device.management.device,usage_type:0
+msgid "Workstation"
+msgstr "Workstation"
+
+#. module: device_management
+#: selection:device.management.device,usage_type:0
+msgid "Server"
+msgstr "Server"
+
+#. module: device_management
+#: selection:device.management.device,device_type:0
+msgid "PC"
+msgstr "PC"
+
+#. module: device_management
+#: selection:device.management.device,device_type:0
+msgid "Laptop"
+msgstr "Laptop"
+
+#. module: device_management
+#: selection:device.management.device,device_type:0
+msgid "Server"
+msgstr "Server"
+
+#. module: device_management
+#: selection:device.management.device,device_type:0
+msgid "Embedded"
+msgstr "Embedded"
+
+#. module: device_management
+#: selection:device.management.log,log_type:0
+msgid "Maintenance"
+msgstr "Pemeliharaan"
+
+#. module: device_management
+#: selection:device.management.log,log_type:0
+msgid "Repair"
+msgstr "Perbaikan"
+
+#. module: device_management
+#: selection:device.management.log,log_type:0
+msgid "Upgrade"
+msgstr "Upgrade"
+
+#. module: device_management
+#: selection:device.management.log,log_type:0
+msgid "Troubleshooting"
+msgstr "Troubleshooting"
+
+#. module: device_management
+#: selection:device.management.log,log_type:0
+msgid "Other"
+msgstr "Lainnya"
+
+#. module: device_management
+#: model:res.groups,name:device_management.group_device_user
+msgid "Device User"
+msgstr "Pengguna Perangkat"
+
+#. module: device_management
+#: model:res.groups,name:device_management.group_device_manager
+msgid "Device Manager"
+msgstr "Manajer Perangkat"
+
+#. module: device_management
+#: model:res.groups,name:device_management.group_device_administrator
+msgid "Device Administrator"
+msgstr "Administrator Perangkat"
+
+#. module: device_management
+#: model:ir.actions.act_window,name:device_management.action_device_management_device
+#: menuitem,name:device_management.menu_device_management_device
+msgid "Devices"
+msgstr "Perangkat"
+
+#. module: device_management
+#: model:ir.actions.act_window,name:device_management.action_device_management_log
+#: menuitem,name:device_management.menu_device_management_log
+msgid "Maintenance Logs"
+msgstr "Log Pemeliharaan"
+
+#. module: device_management
+#: menuitem,name:device_management.menu_device_management_reports
+msgid "Reports"
+msgstr "Laporan"
+
+#. module: device_management
+#: menuitem,name:device_management.menu_device_management_config
+msgid "Configuration"
+msgstr "Konfigurasi"
+
+#. module: device_management
+#: hr.department,name:device_management.dep_not_linked_yet
+msgid "Not Linked Yet"
+msgstr "Belum Dilinkkan"

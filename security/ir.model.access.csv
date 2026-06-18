@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_device_user,device.user,model_device_management_device,group_device_user,1,0,0,0
+access_log_user,log.user,model_device_management_log,group_device_user,1,0,0,0
+access_device_manager,device.manager,model_device_management_device,group_device_manager,1,1,1,1
+access_log_manager,log.manager,model_device_management_log,group_device_manager,1,1,1,1

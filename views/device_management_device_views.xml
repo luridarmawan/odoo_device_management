@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Device List (Tree) View -->
+    <record id="view_device_management_device_tree" model="ir.ui.view">
+        <field name="name">device.management.device.tree</field>
+        <field name="model">device.management.device</field>
+        <field name="arch" type="xml">
+            <list string="Devices">
+                <field name="name"/>
+                <field name="user_name"/>
+                <field name="ip_address" widget="copyable_ip"/>
+                <field name="mac_address"/>
+                <field name="department_id"/>
+                <field name="location"/>
+                <field name="device_type" widget="badge"/>
+                <field name="usage_type" widget="badge"/>
+                <field name="processor" optional="show"/>
+                <field name="memory_gb" optional="hide"/>
+                <field name="storage_gb" optional="hide"/>
+                <field name="video_adapter" optional="hide"/>
+                <field name="operating_system" widget="badge" decoration-info="operating_system == 'windows'" decoration-success="operating_system == 'linux'" decoration-warning="operating_system == 'mac'"/>
+                <field name="serial_number" optional="hide"/>
+                <field name="active" column_invisible="True"/>
+                <field name="status" widget="badge" decoration-success="status == 'active'" decoration-warning="status == 'broken' or status == 'in_repair'" decoration-danger="status == 'retired' or status == 'disposed' or status == 'parted_out'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Device Form View -->
+    <record id="view_device_management_device_form" model="ir.ui.view">
+        <field name="name">device.management.device.form</field>
+        <field name="model">device.management.device</field>
+        <field name="arch" type="xml">
+            <form string="Device">
+                <header>
+                    <button name="action_connect_remote" type="object" string="Connect Remote" class="btn-primary" invisible="not remote_url" icon="fa-desktop"/>
+                    <button name="action_add_log" type="object" string="Add Log Entry" class="btn-secondary" icon="fa-plus"/>
+                    <field name="active" invisible="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_logs" type="object" class="oe_stat_button" icon="fa-history">
+                            <field name="log_count" string="Logs" widget="statinfo"/>
+                        </button>
+                    </div>
+
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Workstation PC 01"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="General Information" name="general_info">
+                            <field name="status"/>
+                            <field name="department_id" options="{'no_create': True, 'no_open': False}"/>
+                            <field name="user_name" placeholder="e.g. Administrator, user01"/>
+                            <field name="password" widget="password"/>
+                            <field name="location" placeholder="e.g. Room 302, 3rd Floor"/>
+                        </group>
+                        <group string="Network" name="network">
+                            <field name="ip_address" placeholder="e.g. 192.168.1.100"/>
+                            <field name="mac_address" placeholder="e.g. AA:BB:CC:DD:EE:FF"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="Operating System" name="operating_system_group">
+                            <field name="operating_system"/>
+                            <field name="operating_system_series" placeholder="e.g. Windows 11 Pro, Ubuntu 24.04"/>
+                            <field name="serial_number"/>
+                        </group>
+                        <group string="Specifications" name="specifications">
+                            <field name="processor" placeholder="e.g. Intel Core i7-12700"/>
+                            <field name="memory_gb" widget="float" placeholder="e.g. 16"/>
+                            <field name="storage_gb" widget="float" placeholder="e.g. 512"/>
+                            <field name="video_adapter" placeholder="e.g. NVIDIA GeForce RTX 3060"/>
+                        </group>
+                        <group string="Device Classification" name="device_classification">
+                            <field name="device_type"/>
+                            <field name="usage_type"/>
+                        </group>
+                    </group>
+
+                    <group string="Remote Access" name="remote_access">
+                        <group>
+                            <field name="remote_type"/>
+                            <field name="remote_port" placeholder="e.g. 22, 5900"/>
+                            <field name="remote_id" invisible="remote_type != 'rustdesk'" placeholder="e.g. 123456789"/>
+                        </group>
+                        <group invisible="not remote_url">
+                            <field name="remote_url" readonly="1" widget="link_protocol"/>
+                            <label for="remote_command" string="Fallback Command"/>
+                            <div class="">
+                                <field name="remote_command" readonly="1"/>
+                                <br />
+                                <span class="text-muted">(Copy this command if connection link fails)</span>
+                            </div>
+                        </group>
+                    </group>
+
+                    <!-- Alert message about URL protocols -->
+                    <div class="alert alert-info mt-2" role="alert" invisible="not remote_url">
+                        <strong>Important:</strong> Custom URL Protocols (ssh://, rustdesk://, vnc://) require local client applications to be registered as protocol handlers on your OS. If the protocol handler is not registered, copy the fallback command above.
+                    </div>
+
+                    <notebook>
+                        <page string="Maintenance History" name="maintenance_history">
+                            <field name="maintenance_log_ids" context="{'default_log_type': 'maintenance', 'default_device_id': id}">
+                                <list editable="bottom">
+                                    <field name="date"/>
+                                    <field name="user_id"/>
+                                    <field name="title"/>
+                                    <field name="description"/>
+                                    <field name="log_type" column_invisible="True"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Repair Log" name="repair_log">
+                            <field name="repair_log_ids" context="{'default_log_type': 'repair', 'default_device_id': id}">
+                                <list editable="bottom">
+                                    <field name="date"/>
+                                    <field name="user_id"/>
+                                    <field name="title"/>
+                                    <field name="description"/>
+                                    <field name="log_type" column_invisible="True"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes" name="notes_page">
+                            <field name="notes" placeholder="Enter general notes or hardware specifications here..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <!-- Chatter -->
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Device Search View -->
+    <record id="view_device_management_device_search" model="ir.ui.view">
+        <field name="name">device.management.device.search</field>
+        <field name="model">device.management.device</field>
+        <field name="arch" type="xml">
+            <search string="Search Devices">
+                <field name="name"/>
+                <field name="user_name"/>
+                <field name="ip_address"/>
+                <field name="mac_address"/>
+                <field name="location"/>
+                <field name="department_id"/>
+                <field name="processor"/>
+                <field name="memory_gb"/>
+                <field name="storage_gb"/>
+                <field name="video_adapter"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <separator/>
+                <filter string="Department" name="group_by_department" context="{'group_by': 'department_id'}"/>
+                <filter string="Operating System" name="group_by_os" context="{'group_by': 'operating_system'}"/>
+                <filter string="Device Type" name="group_by_device_type" context="{'group_by': 'device_type'}"/>
+                <filter string="Usage Type" name="group_by_usage_type" context="{'group_by': 'usage_type'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Device Graph View -->
+    <record id="view_device_management_device_graph" model="ir.ui.view">
+        <field name="name">device.management.device.graph</field>
+        <field name="model">device.management.device</field>
+        <field name="arch" type="xml">
+            <graph string="Devices Analysis" type="bar">
+                <field name="department_id" type="row"/>
+                <field name="device_type" type="col"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Device Pivot View -->
+    <record id="view_device_management_device_pivot" model="ir.ui.view">
+        <field name="name">device.management.device.pivot</field>
+        <field name="model">device.management.device</field>
+        <field name="arch" type="xml">
+            <pivot string="Devices Analysis">
+                <field name="department_id" type="row"/>
+                <field name="device_type" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Window Action -->
+    <record id="action_device_management_device" model="ir.actions.act_window">
+        <field name="name">Devices</field>
+        <field name="res_model">device.management.device</field>
+        <field name="view_mode">list,form,graph,pivot</field>
+        <field name="search_view_id" ref="view_device_management_device_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Register your first IT device!
+            </p>
+            <p>
+                Track company workstation PCs, laptops, servers, and other network devices.
+            </p>
+        </field>
+    </record>
+</odoo>

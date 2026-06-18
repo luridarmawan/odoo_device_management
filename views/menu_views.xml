@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_device_management_root"
+              name="Device Management"
+              web_icon="device_management,static/description/icon.png"
+              sequence="100"/>
+
+    <!-- Left Category: Devices -->
+    <menuitem id="menu_device_management_device"
+              name="Devices"
+              parent="menu_device_management_root"
+              action="action_device_management_device"
+              sequence="10"/>
+
+    <!-- Left Category: Maintenance Logs -->
+    <menuitem id="menu_device_management_log"
+              name="Maintenance Logs"
+              parent="menu_device_management_root"
+              action="action_device_management_log"
+              sequence="20"/>
+
+    <!-- Left Category: Reports -->
+    <menuitem id="menu_device_management_reports"
+              name="Reports"
+              parent="menu_device_management_root"
+              sequence="30"/>
+
+    <!-- Report Submenus -->
+    <record id="action_device_management_device_report" model="ir.actions.act_window">
+        <field name="name">Devices Analysis</field>
+        <field name="res_model">device.management.device</field>
+        <field name="view_mode">graph,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No data to analyze.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_device_management_device_report"
+              name="Devices Analysis"
+              parent="menu_device_management_reports"
+              action="action_device_management_device_report"
+              sequence="10"/>
+
+    <record id="action_device_management_log_report" model="ir.actions.act_window">
+        <field name="name">Logs Analysis</field>
+        <field name="res_model">device.management.log</field>
+        <field name="view_mode">graph,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No log data to analyze.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_device_management_log_report"
+              name="Logs Analysis"
+              parent="menu_device_management_reports"
+              action="action_device_management_log_report"
+              sequence="20"/>
+
+    <!-- Left Category: Configuration -->
+    <menuitem id="menu_device_management_config"
+              name="Configuration"
+              parent="menu_device_management_root"
+              sequence="40"
+              groups="group_device_administrator"/>
+
+    <!-- Configuration Submenus -->
+    <record id="action_device_management_department" model="ir.actions.act_window">
+        <field name="name">Departments</field>
+        <field name="res_model">hr.department</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Configure your departments.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_device_management_department"
+              name="Departments"
+              parent="menu_device_management_config"
+              action="action_device_management_department"
+              sequence="10"/>
+</odoo>
