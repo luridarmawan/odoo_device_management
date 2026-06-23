@@ -303,3 +303,18 @@ msgstr "Konfigurasi"
 #: hr.department,name:device_management.dep_not_linked_yet
 msgid "Not Linked Yet"
 msgstr "Belum Dilinkkan"
+
+#. module: device_management
+#: model:res.groups,name:device_management.group_device_monitor
+msgid "Device Monitor"
+msgstr "Pemantau Perangkat"
+
+#. module: device_management
+#: selection:device.management.device,device_type:0
+msgid "NVR/DVR"
+msgstr "NVR/DVR"
+
+#. module: device_management
+#: selection:device.management.device,device_type:0
+msgid "Camera"
+msgstr "Kamera"
