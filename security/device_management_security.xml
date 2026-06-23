@@ -29,5 +29,41 @@
             <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
             <field name="comment">Full access and administration configuration.</field>
         </record>
+
+        <!-- Auto add System Administrator to Device Administrator -->
+        <record id="base.group_system" model="res.groups">
+            <field name="implied_ids" eval="[(4, ref('group_device_administrator'))]"/>
+        </record>
+
+        <!-- Group: Device Monitor -->
+        <record id="group_device_monitor" model="res.groups">
+            <field name="name">Device Monitor</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="comment">Members of this group can only view NVR/DVR and camera devices.</field>
+        </record>
+
+        <!-- Record Rule: Device Monitor: NVR/DVR and Camera Only -->
+        <record id="rule_device_monitor_nvr_dvr_camera" model="ir.rule">
+            <field name="name">Device Monitor: NVR/DVR and Camera Only</field>
+            <field name="model_id" ref="model_device_management_device"/>
+            <field name="groups" eval="[(4, ref('group_device_monitor'))]"/>
+            <field name="domain_force">[('device_type', 'in', ['nvr_dvr', 'camera'])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Record Rule: Device Monitor: Logs of NVR/DVR and Camera Only -->
+        <record id="rule_log_monitor_nvr_dvr_camera" model="ir.rule">
+            <field name="name">Device Monitor: Logs of NVR/DVR and Camera Only</field>
+            <field name="model_id" ref="model_device_management_log"/>
+            <field name="groups" eval="[(4, ref('group_device_monitor'))]"/>
+            <field name="domain_force">[('device_id.device_type', 'in', ['nvr_dvr', 'camera'])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
     </data>
 </odoo>

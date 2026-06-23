@@ -3,3 +3,5 @@ access_device_user,device.user,model_device_management_device,group_device_user,
 access_log_user,log.user,model_device_management_log,group_device_user,1,0,0,0
 access_device_manager,device.manager,model_device_management_device,group_device_manager,1,1,1,1
 access_log_manager,log.manager,model_device_management_log,group_device_manager,1,1,1,1
+access_device_monitor,device.monitor,model_device_management_device,group_device_monitor,1,0,0,0
+access_log_monitor,log.monitor,model_device_management_log,group_device_monitor,1,0,0,0

@@ -160,6 +160,8 @@ class DeviceManagementDevice(models.Model):
             ('server', 'Server'),
             ('virtual', 'Virtual'),
             ('embedded', 'Embedded'),
+            ('nvr_dvr', 'NVR/DVR'),
+            ('camera', 'Camera'),
             ('others', 'Others'),
         ],
         string='Device Type',

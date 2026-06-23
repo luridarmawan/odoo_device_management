@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Device Management',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.3.1',
     'category': 'Inventory',
     'summary': 'IT Device Inventory and Management',
     'description': """
